@@ -1,0 +1,986 @@
+<html>
+<head>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+    <style>
+        table td{
+            
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            background-color: antiquewhite;
+        }
+    </style>
+    <div class="cell" id="elem"></div> 
+    <script>
+        let elem = document.querySelector('#elem');
+        x = 50;
+        y = 50;
+        createTable(elem,x,y);
+        function createTable(parent, cols, rows){
+            let table = document.createElement('table');
+            for ( let i = 0; i< cols; i++){
+                let tr = document.createElement('tr');
+                for ( let j = 0; j< cols; j++){
+                    let td = document.createElement('td');
+                    td.innerHTML = getRandomInt(1, 3);
+                    $(function(){
+                        $('td').each(function(i, el){
+                            $(el).attr('id', 'td' + (i+1));
+                        });
+                    });
+                    tr.appendChild(td);
+                }
+                table.appendChild(tr);
+            }
+            parent.appendChild(table);
+        }
+        function getRandomInt(min, max){
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        $( "td" ).click(function() {
+            let tdsg = $(this);
+            console.log(tdsg);
+            if (this.innerHTML == '1'){
+                this.style.backgroundColor = ('green');
+                attrId = $(this).attr("id").match(/\d+/);;
+                if ((attrId % 50 == 1) || (attrId == 1) ){ 
+                    xMinusX = +attrId - x;
+                    xPlus1AndMinusX = +attrId + 1 - x;
+                    xPlus1 = +attrId + 1;
+                    xPlusX = +attrId + x;
+                    xPlus1AndPlusX = +attrId + 1 + x;
+                    $( "#td" + (xMinusX) ).css( "backgroundColor", "green" );
+                    $( "#td" + (xPlus1AndMinusX) ).css( "backgroundColor", "green" );
+                    $( "#td" + (xPlus1) ).css( "backgroundColor", "green" );
+                    $( "#td" + (xPlusX) ).css( "backgroundColor", "green" );
+                    $( "#td" + (xPlus1AndPlusX) ).css( "backgroundColor", "green" );
+                }
+                else if ((attrId % 50 == 0)){
+                        xMinus1AndMinusX = +attrId - 1 - x;
+                        xMinusX = +attrId - x;
+                        xMinus1 = +attrId - 1;
+                        xMinus1AndPlusX = +attrId - 1 + x;
+                        xPlusX = +attrId + x;
+                        $( "#td" + (xMinus1AndMinusX) ).css( "backgroundColor", "green" );
+                        $( "#td" + (xMinusX) ).css( "backgroundColor", "green" );
+                        $( "#td" + (xMinus1) ).css( "backgroundColor", "green" );
+                        $( "#td" + (xMinus1AndPlusX) ).css( "backgroundColor", "green" );
+                        $( "#td" + (xPlusX) ).css( "backgroundColor", "green" );
+                }
+                else{
+//                1-3
+                xMinus1AndMinusX = +attrId - 1 - x;
+                xMinusX = +attrId - x;
+                xPlus1AndMinusX = +attrId + 1 - x;
+//                3-6 without this                
+                xMinus1 = +attrId - 1;
+                xPlus1 = +attrId + 1;               
+//                6-9                
+                xMinus1AndPlusX = +attrId - 1 + x;
+                xPlusX = +attrId + x;
+                xPlus1AndPlusX = +attrId + 1 + x;                                
+//                1-3                
+                $( "#td" + (xMinus1AndMinusX) ).css( "backgroundColor", "green" );
+                $( "#td" + (xMinusX) ).css( "backgroundColor", "green" );
+                $( "#td" + (xPlus1AndMinusX) ).css( "backgroundColor", "green" );
+//                3-6 without this
+                $( "#td" + (xMinus1) ).css( "backgroundColor", "green" );
+                $( "#td" + (xPlus1) ).css( "backgroundColor", "green" );
+//                6-9
+                $( "#td" + (xMinus1AndPlusX) ).css( "backgroundColor", "green" );
+                $( "#td" + (xPlusX) ).css( "backgroundColor", "green" );
+                $( "#td" + (xPlus1AndPlusX) ).css( "backgroundColor", "green" );
+                }}
+            if (this.innerHTML == '2'){
+                this.style.backgroundColor = ('blue');
+                attrId = $(this).attr("id").match(/\d+/);;
+                if ((attrId % 50 == 1) || (attrId == 1) ){
+                    xMinus2X = +attrId - (2*x);
+                    xPlus1AndMinus2X = +attrId + 1 - (2*x);
+                    xPlus2AndMinus2X = +attrId + 2 - (2*x);
+                    xMinusX = +attrId - x;
+                    xPlus1AndMinusX = +attrId + 1 - x;
+                    xPlus2AndMinusX = +attrId + 2 - x;
+                    xPlus1 = +attrId + 1;
+                    xPlus2 = +attrId + 2;
+                    xPlusX = +attrId + x;
+                    xPlus1AndPlusX = +attrId + 1 + x;
+                    xPlus2AndPlusX = +attrId + 2 + x;
+                    xPlus2X = +attrId + (2*x);
+                    xPlus1AndPlus2X = +attrId + 1 + (2*x);
+                    xPlus2AndPlus2X = +attrId + 2 + (2*x);
+//                1-5
+                    $( "#td" + (xMinus2X) ).css( "backgroundColor", "blue" );
+                    $( "#td" + (xPlus1AndMinus2X) ).css( "backgroundColor", "blue" );
+                    $( "#td" + (xPlus2AndMinus2X) ).css( "backgroundColor", "blue" );
+//                5-10 
+                    $( "#td" + (xMinusX) ).css( "backgroundColor", "blue" );
+                    $( "#td" + (xPlus1AndMinusX) ).css( "backgroundColor", "blue" );
+                    $( "#td" + (xPlus2AndMinusX) ).css( "backgroundColor", "blue" );
+//                10-15 without this
+                    $( "#td" + (xPlus1) ).css( "backgroundColor", "blue" );
+                    $( "#td" + (xPlus2) ).css( "backgroundColor", "blue" );
+//                15-20 without this                
+                    $( "#td" + (xPlusX) ).css( "backgroundColor", "blue" );
+                    $( "#td" + (xPlus1AndPlusX) ).css( "backgroundColor", "blue" );
+                    $( "#td" + (xPlus2AndPlusX) ).css( "backgroundColor", "blue" );
+//                20-25 without this                  
+                    $( "#td" + (xPlus2X) ).css( "backgroundColor", "blue" );
+                    $( "#td" + (xPlus1AndPlus2X) ).css( "backgroundColor", "blue" );
+                    $( "#td" + (xPlus2AndPlus2X) ).css( "backgroundColor", "blue" ); 
+                }
+                else if ((attrId % 50 == 2) || (attrId == 2) ){
+                    xMinus1AndMinus2X = +attrId - 1 - (2*x);
+                    xMinus1AndMinusX = +attrId - 1 - x;
+                    xMinus1 = +attrId - 1;
+                    xMinus1AndPlusX = +attrId - 1 + x;
+                    xMinus1AndPlus2X = +attrId - 1 + (2*x);
+                    xMinus2X = +attrId - (2*x);
+                    xPlus1AndMinus2X = +attrId + 1 - (2*x);
+                    xPlus2AndMinus2X = +attrId + 2 - (2*x);
+                    xMinusX = +attrId - x;
+                    xPlus1AndMinusX = +attrId + 1 - x;
+                    xPlus2AndMinusX = +attrId + 2 - x;
+                    xPlus1 = +attrId + 1;
+                    xPlus2 = +attrId + 2;
+                    xPlusX = +attrId + x;
+                    xPlus1AndPlusX = +attrId + 1 + x;
+                    xPlus2AndPlusX = +attrId + 2 + x;
+                    xPlus2X = +attrId + (2*x);
+                    xPlus1AndPlus2X = +attrId + 1 + (2*x);
+                    xPlus2AndPlus2X = +attrId + 2 + (2*x);
+//                1-5
+                    $( "#td" + (xMinus1AndMinus2X) ).css( "backgroundColor", "blue" );
+                    $( "#td" + (xMinus2X) ).css( "backgroundColor", "blue" );
+                    $( "#td" + (xPlus1AndMinus2X) ).css( "backgroundColor", "blue" );
+                    $( "#td" + (xPlus2AndMinus2X) ).css( "backgroundColor", "blue" );
+//                5-10 
+                    $( "#td" + (xMinus1AndMinusX) ).css( "backgroundColor", "blue" );
+                    $( "#td" + (xMinusX) ).css( "backgroundColor", "blue" );
+                    $( "#td" + (xPlus1AndMinusX) ).css( "backgroundColor", "blue" );
+                    $( "#td" + (xPlus2AndMinusX) ).css( "backgroundColor", "blue" );
+//                10-15 without this
+                    $( "#td" + (xMinus1) ).css( "backgroundColor", "blue" );
+                    $( "#td" + (xPlus1) ).css( "backgroundColor", "blue" );
+                    $( "#td" + (xPlus2) ).css( "backgroundColor", "blue" );
+//                15-20 without this
+                    $( "#td" + (xMinus1AndPlusX) ).css( "backgroundColor", "blue" );
+                    $( "#td" + (xPlusX) ).css( "backgroundColor", "blue" );
+                    $( "#td" + (xPlus1AndPlusX) ).css( "backgroundColor", "blue" );
+                    $( "#td" + (xPlus2AndPlusX) ).css( "backgroundColor", "blue" );
+//                20-25 without this   
+                    $( "#td" + (xMinus1AndPlus2X) ).css( "backgroundColor", "blue" );
+                    $( "#td" + (xPlus2X) ).css( "backgroundColor", "blue" );
+                    $( "#td" + (xPlus1AndPlus2X) ).css( "backgroundColor", "blue" );
+                    $( "#td" + (xPlus2AndPlus2X) ).css( "backgroundColor", "blue" ); 
+                }
+                else if(attrId % 50 == 0){
+                            xMinus2AndMinus2X = +attrId - 2 - (2*x);
+                    xMinus1AndMinus2X = +attrId - 1 - (2*x);
+                    xMinus2X = +attrId - (2*x);
+//                5-10 
+                xMinus2AndMinusX = +attrId - 2 - x;
+                xMinus1AndMinusX = +attrId - 1 - x;
+                xMinusX = +attrId - x;
+//                10-15 without this
+                xMinus2 = +attrId - 2;
+                xMinus1 = +attrId - 1;
+//                15-20 without this                
+                xMinus2AndPlusX = +attrId - 2 + x;
+                xMinus1AndPlusX = +attrId - 1 + x;
+                xPlusX = +attrId + x;
+//                20-25 without this                  
+                xMinus2AndPlus2X = +attrId - 2 + (2*x);
+                xMinus1AndPlus2X = +attrId - 1 + (2*x);
+                xPlus2X = +attrId + (2*x);
+//                1-5
+                $( "#td" + (xMinus2AndMinus2X) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xMinus1AndMinus2X) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xMinus2X) ).css( "backgroundColor", "blue" );
+//                5-10 
+                $( "#td" + (xMinus2AndMinusX) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xMinus1AndMinusX) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xMinusX) ).css( "backgroundColor", "blue" );
+//                10-15 without this
+                $( "#td" + (xMinus2) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xMinus1) ).css( "backgroundColor", "blue" );
+//                15-20 without this                
+                $( "#td" + (xMinus2AndPlusX) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xMinus1AndPlusX) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xPlusX) ).css( "backgroundColor", "blue" );
+                
+                
+//                20-25 without this                  
+                $( "#td" + (xMinus2AndPlus2X) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xMinus1AndPlus2X) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xPlus2X) ).css( "backgroundColor", "blue" );
+                
+                
+                }
+                else if(attrId % 50 == 49){
+                    
+                    xMinus2AndMinus2X = +attrId - 2 - (2*x);
+                    xMinus1AndMinus2X = +attrId - 1 - (2*x);
+                    xMinus2X = +attrId - (2*x);
+                    xPlus1AndMinus2X = +attrId + 1 - (2*x);
+                    
+                
+//                5-10 
+                
+                xMinus2AndMinusX = +attrId - 2 - x;
+                xMinus1AndMinusX = +attrId - 1 - x;
+                xMinusX = +attrId - x;
+                xPlus1AndMinusX = +attrId + 1 - x;
+                
+                
+//                10-15 without this
+                
+                xMinus2 = +attrId - 2;
+                xMinus1 = +attrId - 1;
+                xPlus1 = +attrId + 1;
+                
+                
+//                15-20 without this                
+                
+                xMinus2AndPlusX = +attrId - 2 + x;
+                xMinus1AndPlusX = +attrId - 1 + x;
+                xPlusX = +attrId + x;
+                xPlus1AndPlusX = +attrId + 1 + x;
+                
+                
+//                20-25 without this                  
+                
+                xMinus2AndPlus2X = +attrId - 2 + (2*x);
+                xMinus1AndPlus2X = +attrId - 1 + (2*x);
+                xPlus2X = +attrId + (2*x);
+                xPlus1AndPlus2X = +attrId + 1 + (2*x);
+                
+                
+                
+
+                
+                
+//                1-5
+                $( "#td" + (xMinus2AndMinus2X) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xMinus1AndMinus2X) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xMinus2X) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xPlus1AndMinus2X) ).css( "backgroundColor", "blue" );
+                
+//                5-10 
+                $( "#td" + (xMinus2AndMinusX) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xMinus1AndMinusX) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xMinusX) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xPlus1AndMinusX) ).css( "backgroundColor", "blue" );
+                
+//                10-15 without this
+                $( "#td" + (xMinus2) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xMinus1) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xPlus1) ).css( "backgroundColor", "blue" );
+                
+//                15-20 without this                
+                $( "#td" + (xMinus2AndPlusX) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xMinus1AndPlusX) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xPlusX) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xPlus1AndPlusX) ).css( "backgroundColor", "blue" );
+                
+//                20-25 without this                  
+                $( "#td" + (xMinus2AndPlus2X) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xMinus1AndPlus2X) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xPlus2X) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xPlus1AndPlus2X) ).css( "backgroundColor", "blue" );
+                
+                    
+                }        
+                
+                
+//                1-5
+                else{
+                xMinus2AndMinus2X = +attrId - 2 - (2*x);
+                xMinus1AndMinus2X = +attrId - 1 - (2*x);
+                xMinus2X = +attrId - (2*x);
+                xPlus1AndMinus2X = +attrId + 1 - (2*x);
+                xPlus2AndMinus2X = +attrId + 2 - (2*x);
+                
+//                5-10 
+                
+                xMinus2AndMinusX = +attrId - 2 - x;
+                xMinus1AndMinusX = +attrId - 1 - x;
+                xMinusX = +attrId - x;
+                xPlus1AndMinusX = +attrId + 1 - x;
+                xPlus2AndMinusX = +attrId + 2 - x;
+                
+//                10-15 without this
+                
+                xMinus2 = +attrId - 2;
+                xMinus1 = +attrId - 1;
+                xPlus1 = +attrId + 1;
+                xPlus2 = +attrId + 2;
+                
+//                15-20 without this                
+                
+                xMinus2AndPlusX = +attrId - 2 + x;
+                xMinus1AndPlusX = +attrId - 1 + x;
+                xPlusX = +attrId + x;
+                xPlus1AndPlusX = +attrId + 1 + x;
+                xPlus2AndPlusX = +attrId + 2 + x;
+                
+//                20-25 without this                  
+                
+                xMinus2AndPlus2X = +attrId - 2 + (2*x);
+                xMinus1AndPlus2X = +attrId - 1 + (2*x);
+                xPlus2X = +attrId + (2*x);
+                xPlus1AndPlus2X = +attrId + 1 + (2*x);
+                xPlus2AndPlus2X = +attrId + 2 + (2*x);
+                
+                
+
+                
+                
+//                1-5
+                $( "#td" + (xMinus2AndMinus2X) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xMinus1AndMinus2X) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xMinus2X) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xPlus1AndMinus2X) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xPlus2AndMinus2X) ).css( "backgroundColor", "blue" );
+//                5-10 
+                $( "#td" + (xMinus2AndMinusX) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xMinus1AndMinusX) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xMinusX) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xPlus1AndMinusX) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xPlus2AndMinusX) ).css( "backgroundColor", "blue" );
+//                10-15 without this
+                $( "#td" + (xMinus2) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xMinus1) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xPlus1) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xPlus2) ).css( "backgroundColor", "blue" );
+//                15-20 without this                
+                $( "#td" + (xMinus2AndPlusX) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xMinus1AndPlusX) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xPlusX) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xPlus1AndPlusX) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xPlus2AndPlusX) ).css( "backgroundColor", "blue" );
+//                20-25 without this                  
+                $( "#td" + (xMinus2AndPlus2X) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xMinus1AndPlus2X) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xPlus2X) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xPlus1AndPlus2X) ).css( "backgroundColor", "blue" );
+                $( "#td" + (xPlus2AndPlus2X) ).css( "backgroundColor", "blue" );  
+            }}
+            if (this.innerHTML == '3'){
+                this.style.backgroundColor = ('red');
+                attrId = $(this).attr("id").match(/\d+/);;
+                if ((attrId % 50 == 1) || (attrId == 1) ){
+                xMinus3X = +attrId - (3*x);
+                xPlus1AndMinus3X = +attrId + 1 - (3*x);
+                xPlus2AndMinus3X = +attrId + 2 - (3*x);
+                xPlus3AndMinus3X = +attrId + 3 - (3*x);
+//                7-14 
+                xMinus2X = +attrId - (2*x);
+                xPlus1AndMinus2X = +attrId + 1 - (2*x);
+                xPlus2AndMinus2X = +attrId + 2 - (2*x);
+                xPlus3AndMinus2X = +attrId + 3 - (2*x);
+//                14-21 
+                xMinusX = +attrId - x;
+                xPlus1AndMinusX = +attrId + 1 - x;
+                xPlus2AndMinusX = +attrId + 2 - x;
+                xPlus3AndMinusX = +attrId + 3 - x;
+//                21-28 without this 
+                xPlus1 = +attrId + 1;
+                xPlus2 = +attrId + 2;
+                xPlus3 = +attrId + 3;
+//                28-35                   
+                xPlusX = +attrId + x;
+                xPlus1AndPlusX = +attrId + 1 + x;
+                xPlus2AndPlusX = +attrId + 2 + x;
+                xPlus3AndPlusX = +attrId + 3 + x;
+//                35-42                
+                xPlus2X = +attrId + (2*x);
+                xPlus1AndPlus2X = +attrId + 1 + (2*x);
+                xPlus2AndPlus2X = +attrId + 2 + (2*x);
+                xPlus3AndPlus2X = +attrId + 3 + (2*x);
+//                42-49                
+                xPlus3X = +attrId + (3*x);
+                xPlus1AndPlus3X = +attrId + 1 + (3*x);
+                xPlus2AndPlus3X = +attrId + 2 + (3*x);
+                xPlus3AndPlus3X = +attrId + 3 + (3*x);
+//                1-7
+                $( "#td" + (xMinus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1AndMinus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2AndMinus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus3AndMinus3X) ).css( "backgroundColor", "red" );
+//                7-14
+                $( "#td" + (xMinus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1AndMinus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2AndMinus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus3AndMinus2X) ).css( "backgroundColor", "red" );
+//                14-21
+                $( "#td" + (xMinusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1AndMinusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2AndMinusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus3AndMinusX) ).css( "backgroundColor", "red" );
+//                21-28
+                $( "#td" + (xPlus1) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus3) ).css( "backgroundColor", "red" );
+//                28-35
+                $( "#td" + (xPlusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1AndPlusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2AndPlusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus3AndPlusX) ).css( "backgroundColor", "red" );
+//                35-42
+                $( "#td" + (xPlus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1AndPlus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2AndPlus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus3AndPlus2X) ).css( "backgroundColor", "red" );
+//                42-49
+                $( "#td" + (xPlus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1AndPlus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2AndPlus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus3AndPlus3X) ).css( "backgroundColor", "red" );
+                }
+                else if((attrId % 50 == 2) || (attrId == 2) ){
+                xMinus1AndMinus3X = +attrId - 1 - (3*x);
+                xMinus3X = +attrId - (3*x);
+                xPlus1AndMinus3X = +attrId + 1 - (3*x);
+                xPlus2AndMinus3X = +attrId + 2 - (3*x);
+                xPlus3AndMinus3X = +attrId + 3 - (3*x);
+//                7-14 
+                xMinus1AndMinus2X = +attrId - 1 - (2*x);
+                xMinus2X = +attrId - (2*x);
+                xPlus1AndMinus2X = +attrId + 1 - (2*x);
+                xPlus2AndMinus2X = +attrId + 2 - (2*x);
+                xPlus3AndMinus2X = +attrId + 3 - (2*x);
+//                14-21 
+                xMinus1AndMinusX = +attrId - 1 - x;
+                xMinusX = +attrId - x;
+                xPlus1AndMinusX = +attrId + 1 - x;
+                xPlus2AndMinusX = +attrId + 2 - x;
+                xPlus3AndMinusX = +attrId + 3 - x;
+//                21-28 without this 
+                xMinus1 = +attrId - 1;
+                xPlus1 = +attrId + 1;
+                xPlus2 = +attrId + 2;
+                xPlus3 = +attrId + 3;
+//                28-35                   
+                xMinus1AndPlusX = +attrId - 1 + x;
+                xPlusX = +attrId + x;
+                xPlus1AndPlusX = +attrId + 1 + x;
+                xPlus2AndPlusX = +attrId + 2 + x;
+                xPlus3AndPlusX = +attrId + 3 + x;
+//                35-42                
+                xMinus1AndPlus2X = +attrId - 1 + (2*x);
+                xPlus2X = +attrId + (2*x);
+                xPlus1AndPlus2X = +attrId + 1 + (2*x);
+                xPlus2AndPlus2X = +attrId + 2 + (2*x);
+                xPlus3AndPlus2X = +attrId + 3 + (2*x);
+//                42-49                
+                xMinus1AndPlus3X = +attrId - 1 + (3*x);
+                xPlus3X = +attrId + (3*x);
+                xPlus1AndPlus3X = +attrId + 1 + (3*x);
+                xPlus2AndPlus3X = +attrId + 2 + (3*x);
+                xPlus3AndPlus3X = +attrId + 3 + (3*x);
+//                1-7
+                $( "#td" + (xMinus1AndMinus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1AndMinus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2AndMinus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus3AndMinus3X) ).css( "backgroundColor", "red" );
+//                7-14
+                $( "#td" + (xMinus1AndMinus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1AndMinus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2AndMinus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus3AndMinus2X) ).css( "backgroundColor", "red" );
+//                14-21
+                $( "#td" + (xMinus1AndMinusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1AndMinusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2AndMinusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus3AndMinusX) ).css( "backgroundColor", "red" );
+//                21-28
+                $( "#td" + (xMinus1) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus3) ).css( "backgroundColor", "red" );
+//                28-35
+                $( "#td" + (xMinus1AndPlusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1AndPlusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2AndPlusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus3AndPlusX) ).css( "backgroundColor", "red" );
+//                35-42
+                $( "#td" + (xMinus1AndPlus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1AndPlus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2AndPlus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus3AndPlus2X) ).css( "backgroundColor", "red" );
+//                42-49
+                $( "#td" + (xMinus1AndPlus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1AndPlus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2AndPlus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus3AndPlus3X) ).css( "backgroundColor", "red" );
+                }
+                else if((attrId % 50 == 3) || (attrId == 3) ){
+                xMinus2AndMinus3X = +attrId - 2 - (3*x);
+                xMinus1AndMinus3X = +attrId - 1 - (3*x);
+                xMinus3X = +attrId - (3*x);
+                xPlus1AndMinus3X = +attrId + 1 - (3*x);
+                xPlus2AndMinus3X = +attrId + 2 - (3*x);
+                xPlus3AndMinus3X = +attrId + 3 - (3*x);
+//                7-14 
+                xMinus2AndMinus2X = +attrId - 2 - (2*x);
+                xMinus1AndMinus2X = +attrId - 1 - (2*x);
+                xMinus2X = +attrId - (2*x);
+                xPlus1AndMinus2X = +attrId + 1 - (2*x);
+                xPlus2AndMinus2X = +attrId + 2 - (2*x);
+                xPlus3AndMinus2X = +attrId + 3 - (2*x);
+//                14-21 
+                xMinus2AndMinusX = +attrId - 2 - x;
+                xMinus1AndMinusX = +attrId - 1 - x;
+                xMinusX = +attrId - x;
+                xPlus1AndMinusX = +attrId + 1 - x;
+                xPlus2AndMinusX = +attrId + 2 - x;
+                xPlus3AndMinusX = +attrId + 3 - x;
+//                21-28 without this 
+                xMinus2 = +attrId - 2;
+                xMinus1 = +attrId - 1;
+                xPlus1 = +attrId + 1;
+                xPlus2 = +attrId + 2;
+                xPlus3 = +attrId + 3;
+//                28-35                   
+                xMinus2AndPlusX = +attrId - 2 + x;
+                xMinus1AndPlusX = +attrId - 1 + x;
+                xPlusX = +attrId + x;
+                xPlus1AndPlusX = +attrId + 1 + x;
+                xPlus2AndPlusX = +attrId + 2 + x;
+                xPlus3AndPlusX = +attrId + 3 + x;
+//                35-42                
+                xMinus2AndPlus2X = +attrId - 2 + (2*x);
+                xMinus1AndPlus2X = +attrId - 1 + (2*x);
+                xPlus2X = +attrId + (2*x);
+                xPlus1AndPlus2X = +attrId + 1 + (2*x);
+                xPlus2AndPlus2X = +attrId + 2 + (2*x);
+                xPlus3AndPlus2X = +attrId + 3 + (2*x);
+//                42-49                
+                xMinus2AndPlus3X = +attrId - 2 + (3*x);
+                xMinus1AndPlus3X = +attrId - 1 + (3*x);
+                xPlus3X = +attrId + (3*x);
+                xPlus1AndPlus3X = +attrId + 1 + (3*x);
+                xPlus2AndPlus3X = +attrId + 2 + (3*x);
+                xPlus3AndPlus3X = +attrId + 3 + (3*x);
+//                1-7
+                $( "#td" + (xMinus2AndMinus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus1AndMinus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1AndMinus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2AndMinus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus3AndMinus3X) ).css( "backgroundColor", "red" );
+//                7-14
+                $( "#td" + (xMinus2AndMinus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus1AndMinus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1AndMinus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2AndMinus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus3AndMinus2X) ).css( "backgroundColor", "red" );
+//                14-21
+                $( "#td" + (xMinus2AndMinusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus1AndMinusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1AndMinusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2AndMinusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus3AndMinusX) ).css( "backgroundColor", "red" );
+//                21-28
+                $( "#td" + (xMinus2) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus1) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus3) ).css( "backgroundColor", "red" );
+//                28-35
+                $( "#td" + (xMinus2AndPlusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus1AndPlusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1AndPlusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2AndPlusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus3AndPlusX) ).css( "backgroundColor", "red" );
+//                35-42
+                $( "#td" + (xMinus2AndPlus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus1AndPlus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1AndPlus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2AndPlus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus3AndPlus2X) ).css( "backgroundColor", "red" );
+//                42-49
+                $( "#td" + (xMinus2AndPlus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus1AndPlus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1AndPlus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2AndPlus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus3AndPlus3X) ).css( "backgroundColor", "red" ); 
+                }
+                else if(attrId % 50 == 0){
+                        xMinus3AndMinus3X = +attrId - 3 - (3*x);
+                xMinus2AndMinus3X = +attrId - 2 - (3*x);
+                xMinus1AndMinus3X = +attrId - 1 - (3*x);
+                xMinus3X = +attrId - (3*x);
+//                7-14 
+                xMinus3AndMinus2X = +attrId - 3 - (2*x);
+                xMinus2AndMinus2X = +attrId - 2 - (2*x);
+                xMinus1AndMinus2X = +attrId - 1 - (2*x);
+                xMinus2X = +attrId - (2*x);
+//                14-21 
+                xMinus3AndMinusX = +attrId - 3 - x;
+                xMinus2AndMinusX = +attrId - 2 - x;
+                xMinus1AndMinusX = +attrId - 1 - x;
+                xMinusX = +attrId - x;
+//                21-28 without this 
+                xMinus3 = +attrId - 3;
+                xMinus2 = +attrId - 2;
+                xMinus1 = +attrId - 1;
+//                28-35                   
+                xMinus3AndPlusX = +attrId - 3 + x;
+                xMinus2AndPlusX = +attrId - 2 + x;
+                xMinus1AndPlusX = +attrId - 1 + x;
+                xPlusX = +attrId + x;
+//                35-42                
+                xMinus3AndPlus2X = +attrId - 3 + (2*x);
+                xMinus2AndPlus2X = +attrId - 2 + (2*x);
+                xMinus1AndPlus2X = +attrId - 1 + (2*x);
+                xPlus2X = +attrId + (2*x);
+//                42-49                
+                xMinus3AndPlus3X = +attrId - 3 + (3*x);
+                xMinus2AndPlus3X = +attrId - 2 + (3*x);
+                xMinus1AndPlus3X = +attrId - 1 + (3*x);
+                xPlus3X = +attrId + (3*x);
+//                1-7
+                $( "#td" + (xMinus3AndMinus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus2AndMinus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus1AndMinus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus3X) ).css( "backgroundColor", "red" );
+//                7-14
+                $( "#td" + (xMinus3AndMinus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus2AndMinus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus1AndMinus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus2X) ).css( "backgroundColor", "red" );
+//                14-21
+                $( "#td" + (xMinus3AndMinusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus2AndMinusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus1AndMinusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinusX) ).css( "backgroundColor", "red" );
+//                21-28
+                $( "#td" + (xMinus3) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus2) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus1) ).css( "backgroundColor", "red" );
+//                28-35
+                $( "#td" + (xMinus3AndPlusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus2AndPlusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus1AndPlusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlusX) ).css( "backgroundColor", "red" );
+//                35-42
+                $( "#td" + (xMinus3AndPlus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus2AndPlus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus1AndPlus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2X) ).css( "backgroundColor", "red" );
+//                42-49
+                $( "#td" + (xMinus3AndPlus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus2AndPlus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus1AndPlus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus3X) ).css( "backgroundColor", "red" );
+                }
+                else if(attrId % 50 == 49){
+                        xMinus3AndMinus3X = +attrId - 3 - (3*x);
+                xMinus2AndMinus3X = +attrId - 2 - (3*x);
+                xMinus1AndMinus3X = +attrId - 1 - (3*x);
+                xMinus3X = +attrId - (3*x);
+                xPlus1AndMinus3X = +attrId + 1 - (3*x);
+//                7-14 
+                xMinus3AndMinus2X = +attrId - 3 - (2*x);
+                xMinus2AndMinus2X = +attrId - 2 - (2*x);
+                xMinus1AndMinus2X = +attrId - 1 - (2*x);
+                xMinus2X = +attrId - (2*x);
+                xPlus1AndMinus2X = +attrId + 1 - (2*x);
+//                14-21 
+                xMinus3AndMinusX = +attrId - 3 - x;
+                xMinus2AndMinusX = +attrId - 2 - x;
+                xMinus1AndMinusX = +attrId - 1 - x;
+                xMinusX = +attrId - x;
+                xPlus1AndMinusX = +attrId + 1 - x;
+//                21-28 without this 
+                xMinus3 = +attrId - 3;
+                xMinus2 = +attrId - 2;
+                xMinus1 = +attrId - 1;
+                xPlus1 = +attrId + 1;
+//                28-35                   
+                xMinus3AndPlusX = +attrId - 3 + x;
+                xMinus2AndPlusX = +attrId - 2 + x;
+                xMinus1AndPlusX = +attrId - 1 + x;
+                xPlusX = +attrId + x;
+                xPlus1AndPlusX = +attrId + 1 + x;
+//                35-42                
+                xMinus3AndPlus2X = +attrId - 3 + (2*x);
+                xMinus2AndPlus2X = +attrId - 2 + (2*x);
+                xMinus1AndPlus2X = +attrId - 1 + (2*x);
+                xPlus2X = +attrId + (2*x);
+                xPlus1AndPlus2X = +attrId + 1 + (2*x);
+//                42-49                
+                xMinus3AndPlus3X = +attrId - 3 + (3*x);
+                xMinus2AndPlus3X = +attrId - 2 + (3*x);
+                xMinus1AndPlus3X = +attrId - 1 + (3*x);
+                xPlus3X = +attrId + (3*x);
+                xPlus1AndPlus3X = +attrId + 1 + (3*x);
+//                1-7
+                $( "#td" + (xMinus3AndMinus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus2AndMinus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus1AndMinus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1AndMinus3X) ).css( "backgroundColor", "red" );
+//                7-14
+                $( "#td" + (xMinus3AndMinus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus2AndMinus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus1AndMinus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1AndMinus2X) ).css( "backgroundColor", "red" );
+//                14-21
+                $( "#td" + (xMinus3AndMinusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus2AndMinusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus1AndMinusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1AndMinusX) ).css( "backgroundColor", "red" );
+//                21-28
+                $( "#td" + (xMinus3) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus2) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus1) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1) ).css( "backgroundColor", "red" );
+//                28-35
+                $( "#td" + (xMinus3AndPlusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus2AndPlusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus1AndPlusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1AndPlusX) ).css( "backgroundColor", "red" );
+//                35-42
+                $( "#td" + (xMinus3AndPlus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus2AndPlus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus1AndPlus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1AndPlus2X) ).css( "backgroundColor", "red" );
+//                42-49
+                $( "#td" + (xMinus3AndPlus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus2AndPlus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus1AndPlus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1AndPlus3X) ).css( "backgroundColor", "red" );
+                }
+                else if(attrId % 50 == 48){
+                        xMinus3AndMinus3X = +attrId - 3 - (3*x);
+                xMinus2AndMinus3X = +attrId - 2 - (3*x);
+                xMinus1AndMinus3X = +attrId - 1 - (3*x);
+                xMinus3X = +attrId - (3*x);
+                xPlus1AndMinus3X = +attrId + 1 - (3*x);
+                xPlus2AndMinus3X = +attrId + 2 - (3*x);
+//                7-14 
+                xMinus3AndMinus2X = +attrId - 3 - (2*x);
+                xMinus2AndMinus2X = +attrId - 2 - (2*x);
+                xMinus1AndMinus2X = +attrId - 1 - (2*x);
+                xMinus2X = +attrId - (2*x);
+                xPlus1AndMinus2X = +attrId + 1 - (2*x);
+                xPlus2AndMinus2X = +attrId + 2 - (2*x);
+//                14-21 
+                xMinus3AndMinusX = +attrId - 3 - x;
+                xMinus2AndMinusX = +attrId - 2 - x;
+                xMinus1AndMinusX = +attrId - 1 - x;
+                xMinusX = +attrId - x;
+                xPlus1AndMinusX = +attrId + 1 - x;
+                xPlus2AndMinusX = +attrId + 2 - x;
+//                21-28 without this 
+                xMinus3 = +attrId - 3;
+                xMinus2 = +attrId - 2;
+                xMinus1 = +attrId - 1;
+                xPlus1 = +attrId + 1;
+                xPlus2 = +attrId + 2;
+//                28-35                   
+                xMinus3AndPlusX = +attrId - 3 + x;
+                xMinus2AndPlusX = +attrId - 2 + x;
+                xMinus1AndPlusX = +attrId - 1 + x;
+                xPlusX = +attrId + x;
+                xPlus1AndPlusX = +attrId + 1 + x;
+                xPlus2AndPlusX = +attrId + 2 + x;
+//                35-42                
+                xMinus3AndPlus2X = +attrId - 3 + (2*x);
+                xMinus2AndPlus2X = +attrId - 2 + (2*x);
+                xMinus1AndPlus2X = +attrId - 1 + (2*x);
+                xPlus2X = +attrId + (2*x);
+                xPlus1AndPlus2X = +attrId + 1 + (2*x);
+                xPlus2AndPlus2X = +attrId + 2 + (2*x);
+//                42-49                
+                xMinus3AndPlus3X = +attrId - 3 + (3*x);
+                xMinus2AndPlus3X = +attrId - 2 + (3*x);
+                xMinus1AndPlus3X = +attrId - 1 + (3*x);
+                xPlus3X = +attrId + (3*x);
+                xPlus1AndPlus3X = +attrId + 1 + (3*x);
+                xPlus2AndPlus3X = +attrId + 2 + (3*x);
+//                1-7
+                $( "#td" + (xMinus3AndMinus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus2AndMinus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus1AndMinus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1AndMinus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2AndMinus3X) ).css( "backgroundColor", "red" );
+//                7-14
+                $( "#td" + (xMinus3AndMinus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus2AndMinus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus1AndMinus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1AndMinus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2AndMinus2X) ).css( "backgroundColor", "red" );
+//                14-21
+                $( "#td" + (xMinus3AndMinusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus2AndMinusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus1AndMinusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1AndMinusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2AndMinusX) ).css( "backgroundColor", "red" );
+//                21-28
+                $( "#td" + (xMinus3) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus2) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus1) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2) ).css( "backgroundColor", "red" );
+//                28-35
+                $( "#td" + (xMinus3AndPlusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus2AndPlusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus1AndPlusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1AndPlusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2AndPlusX) ).css( "backgroundColor", "red" );
+//                35-42
+                $( "#td" + (xMinus3AndPlus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus2AndPlus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus1AndPlus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1AndPlus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2AndPlus2X) ).css( "backgroundColor", "red" );
+//                42-49
+                $( "#td" + (xMinus3AndPlus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus2AndPlus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus1AndPlus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1AndPlus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2AndPlus3X) ).css( "backgroundColor", "red" );
+                }
+                else{
+                xMinus3AndMinus3X = +attrId - 3 - (3*x);
+                xMinus2AndMinus3X = +attrId - 2 - (3*x);
+                xMinus1AndMinus3X = +attrId - 1 - (3*x);
+                xMinus3X = +attrId - (3*x);
+                xPlus1AndMinus3X = +attrId + 1 - (3*x);
+                xPlus2AndMinus3X = +attrId + 2 - (3*x);
+                xPlus3AndMinus3X = +attrId + 3 - (3*x);
+//                7-14 
+                xMinus3AndMinus2X = +attrId - 3 - (2*x);
+                xMinus2AndMinus2X = +attrId - 2 - (2*x);
+                xMinus1AndMinus2X = +attrId - 1 - (2*x);
+                xMinus2X = +attrId - (2*x);
+                xPlus1AndMinus2X = +attrId + 1 - (2*x);
+                xPlus2AndMinus2X = +attrId + 2 - (2*x);
+                xPlus3AndMinus2X = +attrId + 3 - (2*x);
+//                14-21 
+                xMinus3AndMinusX = +attrId - 3 - x;
+                xMinus2AndMinusX = +attrId - 2 - x;
+                xMinus1AndMinusX = +attrId - 1 - x;
+                xMinusX = +attrId - x;
+                xPlus1AndMinusX = +attrId + 1 - x;
+                xPlus2AndMinusX = +attrId + 2 - x;
+                xPlus3AndMinusX = +attrId + 3 - x;
+//                21-28 without this 
+                xMinus3 = +attrId - 3;
+                xMinus2 = +attrId - 2;
+                xMinus1 = +attrId - 1;
+                xPlus1 = +attrId + 1;
+                xPlus2 = +attrId + 2;
+                xPlus3 = +attrId + 3;
+//                28-35                   
+                xMinus3AndPlusX = +attrId - 3 + x;
+                xMinus2AndPlusX = +attrId - 2 + x;
+                xMinus1AndPlusX = +attrId - 1 + x;
+                xPlusX = +attrId + x;
+                xPlus1AndPlusX = +attrId + 1 + x;
+                xPlus2AndPlusX = +attrId + 2 + x;
+                xPlus3AndPlusX = +attrId + 3 + x;
+//                35-42                
+                xMinus3AndPlus2X = +attrId - 3 + (2*x);
+                xMinus2AndPlus2X = +attrId - 2 + (2*x);
+                xMinus1AndPlus2X = +attrId - 1 + (2*x);
+                xPlus2X = +attrId + (2*x);
+                xPlus1AndPlus2X = +attrId + 1 + (2*x);
+                xPlus2AndPlus2X = +attrId + 2 + (2*x);
+                xPlus3AndPlus2X = +attrId + 3 + (2*x);
+//                42-49                
+                xMinus3AndPlus3X = +attrId - 3 + (3*x);
+                xMinus2AndPlus3X = +attrId - 2 + (3*x);
+                xMinus1AndPlus3X = +attrId - 1 + (3*x);
+                xPlus3X = +attrId + (3*x);
+                xPlus1AndPlus3X = +attrId + 1 + (3*x);
+                xPlus2AndPlus3X = +attrId + 2 + (3*x);
+                xPlus3AndPlus3X = +attrId + 3 + (3*x);
+//                1-7
+                $( "#td" + (xMinus3AndMinus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus2AndMinus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus1AndMinus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1AndMinus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2AndMinus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus3AndMinus3X) ).css( "backgroundColor", "red" );
+//                7-14
+                $( "#td" + (xMinus3AndMinus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus2AndMinus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus1AndMinus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1AndMinus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2AndMinus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus3AndMinus2X) ).css( "backgroundColor", "red" );
+//                14-21
+                $( "#td" + (xMinus3AndMinusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus2AndMinusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus1AndMinusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1AndMinusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2AndMinusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus3AndMinusX) ).css( "backgroundColor", "red" );
+//                21-28
+                $( "#td" + (xMinus3) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus2) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus1) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus3) ).css( "backgroundColor", "red" );
+//                28-35
+                $( "#td" + (xMinus3AndPlusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus2AndPlusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus1AndPlusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1AndPlusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2AndPlusX) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus3AndPlusX) ).css( "backgroundColor", "red" );
+//                35-42
+                $( "#td" + (xMinus3AndPlus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus2AndPlus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus1AndPlus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1AndPlus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2AndPlus2X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus3AndPlus2X) ).css( "backgroundColor", "red" );
+//                42-49
+                $( "#td" + (xMinus3AndPlus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus2AndPlus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xMinus1AndPlus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus1AndPlus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus2AndPlus3X) ).css( "backgroundColor", "red" );
+                $( "#td" + (xPlus3AndPlus3X) ).css( "backgroundColor", "red" );       
+            }}   
+        });
+    </script> 
+</body>
+</html>
