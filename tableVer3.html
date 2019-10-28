@@ -1,0 +1,255 @@
+<html>
+<head>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+    <style>
+        table td{
+            
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            background-color: antiquewhite;
+        }
+    </style>
+    <div class="cell" id="elem"></div> 
+    <script>
+        let elem = document.querySelector('#elem');
+        x = 50;
+        y = 50;
+        firstColor = "green";
+        secondColor = "blue";
+        thirdColor = "red";
+        centerOfOne = 2;
+        rangeOfOne = 5;
+        centerOfOne = 2;
+        rangeOfOne = 5;
+        rangeOfTwo = 9;
+        rangeOfThree = 13;
+        centerOfOne = 2;
+        rangeOfOne = 5;
+        shag = 2;
+        createTable(elem,x,y);
+        function createTable(parent, cols, rows){
+            let table = document.createElement('table');
+            for ( let i = 0; i< cols; i++){
+                let tr = document.createElement('tr');
+                for ( let j = 0; j< cols; j++){
+                    let td = document.createElement('td');
+                    td.innerHTML = getRandomInt(1, 3);
+                    $(function(){
+                        $('td').each(function(i, el){
+                            $(el).attr('id', 'td' + (i+1));
+                        });
+                    });
+                    tr.appendChild(td);
+                }
+                table.appendChild(tr);
+            }
+            parent.appendChild(table);
+        }
+        function getRandomInt(min, max){
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        $( "td" ).click(function() {
+            let tdsg = $(this);
+            console.log(tdsg);
+            
+            if (this.innerHTML == '1'){
+                this.style.backgroundColor = ('green');
+                attrId = $(this).attr("id").match(/\d+/);;
+                if ((attrId % x == 1) || (attrId == 1) ){ 
+                    for (let z = 0 ;z < 2; z++){
+                    $( "#td" + (+attrId - z + x + 1) ).css( "backgroundColor", firstColor );
+                    $( "#td" + (+attrId - z - x + 1) ).css( "backgroundColor", firstColor );
+                    }
+                    for (let c = 0 ;c < 1; c++){
+                    $( "#td" + (+attrId - c + centerOfOne - 1) ).css( "backgroundColor", firstColor );
+                    }
+                }
+                else if ((attrId % x == 0)){
+                    for (let z = 1 ;z < 3; z++){
+                    $( "#td" + (+attrId - z + x + 1) ).css( "backgroundColor", firstColor );
+                    $( "#td" + (+attrId - z - x + 1) ).css( "backgroundColor", firstColor );
+                    }
+                    for (let c = 0 ;c < 1; c++){
+                    $( "#td" + (+attrId - c + centerOfOne -3) ).css( "backgroundColor", firstColor );
+                    }
+                }
+                else{
+                    for (let z = 0 ;z < 3; z++){
+                    $( "#td" + (+attrId - z + x + 1) ).css( "backgroundColor", firstColor );
+                    $( "#td" + (+attrId - z - x + 1) ).css( "backgroundColor", firstColor );
+                    }
+                    for (let c = 0 ;c < 1; c++){
+                    $( "#td" + (+attrId - c + centerOfOne -3) ).css( "backgroundColor", firstColor );
+                    $( "#td" + (+attrId - c + centerOfOne - 1) ).css( "backgroundColor", firstColor );
+                    }
+                }
+            }
+            if (this.innerHTML == '2'){
+                this.style.backgroundColor = (secondColor);
+                attrId = $(this).attr("id").match(/\d+/);;
+                if ((attrId % x == 2) || (attrId == 2) ){
+                    for (let z = 0 ;z < rangeOfOne - 1; z++){
+                    $( "#td" + (+attrId - z + (x*2) + centerOfOne) ).css( "backgroundColor", secondColor );
+                    $( "#td" + (+attrId - z - (x*2) + centerOfOne) ).css( "backgroundColor", secondColor );
+                    }
+                    for (let c = 1 ;c < shag; c++){
+                    $( "#td" + (+attrId - c + centerOfOne+1) ).css( "backgroundColor", secondColor );
+                    $( "#td" + (+attrId - c + centerOfOne+1+x) ).css( "backgroundColor", secondColor );
+                    $( "#td" + (+attrId - c + centerOfOne+1-x) ).css( "backgroundColor", secondColor );
+                    }
+                }
+                else if ((attrId % x == 1) || (attrId == 1) ){
+                    for (let z = 0 ;z < rangeOfOne - 2; z++){
+                    $( "#td" + (+attrId - z + (x*2) + centerOfOne) ).css( "backgroundColor", secondColor );
+                    $( "#td" + (+attrId - z - (x*2) + centerOfOne) ).css( "backgroundColor", secondColor );
+                    }
+                    for (let c = 1 ;c < shag; c++){
+                    $( "#td" + (+attrId - c + centerOfOne+1) ).css( "backgroundColor", secondColor );
+                    $( "#td" + (+attrId - c + centerOfOne+1+x) ).css( "backgroundColor", secondColor );
+                    $( "#td" + (+attrId - c + centerOfOne+1-x) ).css( "backgroundColor", secondColor );
+                    }
+                }
+                else if (attrId % x == 0){
+                    for (let z = 2 ;z < rangeOfOne; z++){
+                    $( "#td" + (+attrId - z + (x*2) + centerOfOne) ).css( "backgroundColor", secondColor );
+                    $( "#td" + (+attrId - z - (x*2) + centerOfOne) ).css( "backgroundColor", secondColor );
+                    }
+                    for (let c = 1 ;c < shag; c++){
+                    $( "#td" + (+attrId - c - centerOfOne+1) ).css( "backgroundColor", secondColor );
+                    $( "#td" + (+attrId - c - centerOfOne+1+x) ).css( "backgroundColor", secondColor );
+                    $( "#td" + (+attrId - c - centerOfOne+1-x) ).css( "backgroundColor", secondColor );
+                    }
+                }
+                else if (attrId % x == x-1){
+                    for (let z = 1 ;z < rangeOfOne; z++){
+                    $( "#td" + (+attrId - z + (x*2) + centerOfOne) ).css( "backgroundColor", secondColor );
+                    $( "#td" + (+attrId - z - (x*2) + centerOfOne) ).css( "backgroundColor", secondColor );
+                    }
+                    for (let c = 1 ;c < shag; c++){
+                    $( "#td" + (+attrId - c - centerOfOne+1) ).css( "backgroundColor", secondColor );
+                    $( "#td" + (+attrId - c - centerOfOne+1+x) ).css( "backgroundColor", secondColor );
+                    $( "#td" + (+attrId - c - centerOfOne+1-x) ).css( "backgroundColor", secondColor );
+                    }
+                }            
+                else{
+                    for (let z = 0 ;z < rangeOfOne; z++){
+                    $( "#td" + (+attrId - z + (x*2) + centerOfOne) ).css( "backgroundColor", secondColor );
+                    $( "#td" + (+attrId - z - (x*2) + centerOfOne) ).css( "backgroundColor", secondColor );
+                    }
+                    for (let c = 1 ;c < shag; c++){
+                    $( "#td" + (+attrId - c + centerOfOne+1) ).css( "backgroundColor", secondColor );
+                    $( "#td" + (+attrId - c + centerOfOne+1+x) ).css( "backgroundColor", secondColor );
+                    $( "#td" + (+attrId - c + centerOfOne+1-x) ).css( "backgroundColor", secondColor );
+                    $( "#td" + (+attrId - c - centerOfOne+1) ).css( "backgroundColor", secondColor );
+                    $( "#td" + (+attrId - c - centerOfOne+1+x) ).css( "backgroundColor", secondColor );
+                    $( "#td" + (+attrId - c - centerOfOne+1-x) ).css( "backgroundColor", secondColor );
+                    }
+                } 
+            }
+            if (this.innerHTML == '3'){
+                this.style.backgroundColor = (thirdColor);
+                attrId = $(this).attr("id").match(/\d+/);;
+                if ((attrId % x == 3) || (attrId == 3) ){
+                    for (let z = 0 ;z < 6; z++){
+                    $( "#td" + (+attrId - z + (x*3) + 3) ).css( "backgroundColor", thirdColor );
+                    $( "#td" + (+attrId - z - (x*3) + 3) ).css( "backgroundColor", thirdColor );
+                    }
+                    for (let c = 1 ;c < shag; c++){
+                    $( "#td" + (+attrId - c + centerOfOne+2) ).css( "backgroundColor", thirdColor );
+                    $( "#td" + (+attrId - c + centerOfOne+2+x) ).css( "backgroundColor", thirdColor );
+                    $( "#td" + (+attrId - c + centerOfOne+2-x) ).css( "backgroundColor", thirdColor );
+                    $( "#td" + (+attrId - c + centerOfOne+2-2*x) ).css( "backgroundColor", thirdColor );
+                    $( "#td" + (+attrId - c + centerOfOne+2+2*x) ).css( "backgroundColor", thirdColor );
+                    }
+                }
+                else if ((attrId % x == 2) || (attrId == 2) ){
+                    for (let z = 0 ;z < 5; z++){
+                    $( "#td" + (+attrId - z + (x*3) + 3) ).css( "backgroundColor", thirdColor );
+                    $( "#td" + (+attrId - z - (x*3) + 3) ).css( "backgroundColor", thirdColor );
+                    }
+                    for (let c = 1 ;c < shag; c++){
+                    $( "#td" + (+attrId - c + centerOfOne+2) ).css( "backgroundColor", thirdColor );
+                    $( "#td" + (+attrId - c + centerOfOne+2+x) ).css( "backgroundColor", thirdColor );
+                    $( "#td" + (+attrId - c + centerOfOne+2-x) ).css( "backgroundColor", thirdColor );
+                    $( "#td" + (+attrId - c + centerOfOne+2-2*x) ).css( "backgroundColor", thirdColor );
+                    $( "#td" + (+attrId - c + centerOfOne+2+2*x) ).css( "backgroundColor", thirdColor );
+                    }
+                }
+                else if ((attrId % x == 1) || (attrId == 1) ){
+                    for (let z = 0 ;z < 4; z++){
+                    $( "#td" + (+attrId - z + (x*3) + 3) ).css( "backgroundColor", thirdColor );
+                    $( "#td" + (+attrId - z - (x*3) + 3) ).css( "backgroundColor", thirdColor );
+                    }
+                    for (let c = 1 ;c < shag; c++){
+                    $( "#td" + (+attrId - c + centerOfOne+2) ).css( "backgroundColor", thirdColor );
+                    $( "#td" + (+attrId - c + centerOfOne+2+x) ).css( "backgroundColor", thirdColor );
+                    $( "#td" + (+attrId - c + centerOfOne+2-x) ).css( "backgroundColor", thirdColor );
+                    $( "#td" + (+attrId - c + centerOfOne+2-2*x) ).css( "backgroundColor", thirdColor );
+                    $( "#td" + (+attrId - c + centerOfOne+2+2*x) ).css( "backgroundColor", thirdColor );
+                    }
+                }
+                else if (attrId % x == 0){
+                    for (let z = 3 ;z < 7; z++){
+                    $( "#td" + (+attrId - z + (x*3) + 3) ).css( "backgroundColor", thirdColor );
+                    $( "#td" + (+attrId - z - (x*3) + 3) ).css( "backgroundColor", thirdColor );
+                    }
+                    for (let c = 1 ;c < shag; c++){
+                    $( "#td" + (+attrId - c - centerOfOne) ).css( "backgroundColor", thirdColor );
+                    $( "#td" + (+attrId - c - centerOfOne+x) ).css( "backgroundColor", thirdColor );
+                    $( "#td" + (+attrId - c - centerOfOne-x) ).css( "backgroundColor", thirdColor );
+                    $( "#td" + (+attrId - c - centerOfOne-2*x) ).css( "backgroundColor", thirdColor );
+                    $( "#td" + (+attrId - c - centerOfOne+2*x) ).css( "backgroundColor", thirdColor );
+                    }
+                }
+                else if (attrId % x == x-1){
+                    for (let z = 2 ;z < 7; z++){
+                    $( "#td" + (+attrId - z + (x*3) + 3) ).css( "backgroundColor", thirdColor );
+                    $( "#td" + (+attrId - z - (x*3) + 3) ).css( "backgroundColor", thirdColor );
+                    }
+                    for (let c = 1 ;c < shag; c++){
+                    $( "#td" + (+attrId - c - centerOfOne) ).css( "backgroundColor", thirdColor );
+                    $( "#td" + (+attrId - c - centerOfOne+x) ).css( "backgroundColor", thirdColor );
+                    $( "#td" + (+attrId - c - centerOfOne-x) ).css( "backgroundColor", thirdColor );
+                    $( "#td" + (+attrId - c - centerOfOne-2*x) ).css( "backgroundColor", thirdColor );
+                    $( "#td" + (+attrId - c - centerOfOne+2*x) ).css( "backgroundColor", thirdColor );
+                    }
+                }
+                else if (attrId % x == x-2){
+                    for (let z = 1 ;z < 7; z++){
+                    $( "#td" + (+attrId - z + (x*3) + 3) ).css( "backgroundColor", thirdColor );
+                    $( "#td" + (+attrId - z - (x*3) + 3) ).css( "backgroundColor", thirdColor );
+                    }
+                    for (let c = 1 ;c < shag; c++){
+                    $( "#td" + (+attrId - c - centerOfOne) ).css( "backgroundColor", thirdColor );
+                    $( "#td" + (+attrId - c - centerOfOne+x) ).css( "backgroundColor", thirdColor );
+                    $( "#td" + (+attrId - c - centerOfOne-x) ).css( "backgroundColor", thirdColor );
+                    $( "#td" + (+attrId - c - centerOfOne-2*x) ).css( "backgroundColor", thirdColor );
+                    $( "#td" + (+attrId - c - centerOfOne+2*x) ).css( "backgroundColor", thirdColor );
+                    }
+                } 
+                else{
+                    for (let z = 0 ;z < 7; z++){
+                    $( "#td" + (+attrId - z + (x*3) + 3) ).css( "backgroundColor", thirdColor );
+                    $( "#td" + (+attrId - z - (x*3) + 3) ).css( "backgroundColor", thirdColor );
+                    }
+                    for (let c = 1 ;c < shag; c++){
+                    $( "#td" + (+attrId - c + centerOfOne+2) ).css( "backgroundColor", thirdColor );
+                    $( "#td" + (+attrId - c + centerOfOne+2+x) ).css( "backgroundColor", thirdColor );
+                    $( "#td" + (+attrId - c + centerOfOne+2-x) ).css( "backgroundColor", thirdColor );
+                    $( "#td" + (+attrId - c + centerOfOne+2-2*x) ).css( "backgroundColor", thirdColor );
+                    $( "#td" + (+attrId - c + centerOfOne+2+2*x) ).css( "backgroundColor", thirdColor );
+                    $( "#td" + (+attrId - c - centerOfOne) ).css( "backgroundColor", thirdColor );
+                    $( "#td" + (+attrId - c - centerOfOne+x) ).css( "backgroundColor", thirdColor );
+                    $( "#td" + (+attrId - c - centerOfOne-x) ).css( "backgroundColor", thirdColor );
+                    $( "#td" + (+attrId - c - centerOfOne-2*x) ).css( "backgroundColor", thirdColor );
+                    $( "#td" + (+attrId - c - centerOfOne+2*x) ).css( "backgroundColor", thirdColor );
+                    }
+                } 
+            }
+        });
+    </script> 
+</body>
+</html>
